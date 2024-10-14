@@ -1,0 +1,9 @@
+Data/
+
+.DS_Store
+.gitattributes
+icon.svg.import
+
+# Godot 4+ specific ignores
+.godot/
+/android/
