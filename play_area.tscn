@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://fwkbt5e6blm5"]
 
-[node name="PlayArea_Node2d" type="Node2D"]
+[node name="PlayAreaScene" type="Node2D"]
 position = Vector2(0.991913, 3.13177)
 
 [node name="Battlefield_Node2d" type="Node2D" parent="."]
