@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://fwkbt5e6blm5"]
+[gd_scene load_steps=2 format=3 uid="uid://fwkbt5e6blm5"]
+
+[ext_resource type="Script" path="res://Scripts/LoadCardData.gd" id="1_va8sx"]
 
 [node name="PlayAreaScene" type="Node2D"]
 position = Vector2(0.991913, 3.13177)
+script = ExtResource("1_va8sx")
 
 [node name="Battlefield_Node2d" type="Node2D" parent="."]
 

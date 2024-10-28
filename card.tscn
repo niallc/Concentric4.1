@@ -1,6 +1,37 @@
 [gd_scene load_steps=2 format=3 uid="uid://nrex33lxdhfg"]
 
-[ext_resource type="Script" path="res://Scripts/LoadCardData.gd" id="1_1o0ba"]
+[ext_resource type="Script" path="res://Scripts/Card.gd" id="1_1rdcr"]
 
 [node name="CardRootNode" type="Node2D"]
-script = ExtResource("1_1o0ba")
+script = ExtResource("1_1rdcr")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NameLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="StrengthLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="MaxHPLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CostLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

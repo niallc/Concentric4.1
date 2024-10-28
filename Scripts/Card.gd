@@ -26,6 +26,7 @@ var etfEffectName: String = ""
 #onready var cost_label: Label = $Control/CostLabel if has_node("Control/CostLabel") else null
 
 func _ready():
+	print("In Scripts/Card.gd --> _ready")
 #	print("Scene Tree:")
 #	print_tree()
 #	print("\nNode name:", name)
@@ -40,7 +41,7 @@ func _ready():
 	pass
 	
 func initialize(data: Dictionary) -> void:
-	print("Initialize called with data:", data)
+	#print("Initialize called with data:", data)
 
 	card_name = data.get("card_name", "")
 	image_name = data.get("image_name", "")
@@ -101,5 +102,5 @@ func print_info() -> void:
 	)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
