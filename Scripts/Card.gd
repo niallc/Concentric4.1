@@ -18,30 +18,11 @@ var etfEffectName: String = ""
 @onready var max_hp_label: Label = $Control/MaxHPLabel
 @onready var cost_label: Label = $Control/CostLabel
 
-#onready var control: Control = $Control
-#onready var image_rect: TextureRect = $Control/TextureRect if has_node("Control/TextureRect") else null
-#onready var name_label: Label = $Control/NameLabel if has_node("Control/NameLabel") else null
-#onready var strength_label: Label = $Control/StrengthLabel if has_node("Control/StrengthLabel") else null
-#onready var max_hp_label: Label = $Control/MaxHPLabel if has_node("Control/MaxHPLabel") else null
-#onready var cost_label: Label = $Control/CostLabel if has_node("Control/CostLabel") else null
-
 func _ready():
 	print("In Scripts/Card.gd --> _ready")
-#	print("Scene Tree:")
-#	print_tree()
-#	print("\nNode name:", name)
-#	print("Children of this node:", get_children())
-#	print("Children of Control:", $Control.get_children() if has_node("Control") else "No Control node")
-#	print("Control found:", has_node("Control"))
-#	print("NameLabel found:", has_node("Control/NameLabel"))
-#	print("StrengthLabel found:", has_node("Control/StrengthLabel"))
-#	print("MaxHPLabel found:", has_node("Control/MaxHPLabel"))
-#	print("CostLabel found:", has_node("Control/CostLabel"))
-#	print("TextureRect found:", has_node("Control/TextureRect"))
 	pass
 	
 func initialize(data: Dictionary) -> void:
-	#print("Initialize called with data:", data)
 
 	card_name = data.get("card_name", "")
 	image_name = data.get("image_name", "")
@@ -56,12 +37,6 @@ func initialize(data: Dictionary) -> void:
 
 
 func update_visual_elements() -> void:
-#	print("update_visual_elements called")
-#	print("name_label:", name_label)
-#	print("strength_label:", strength_label)
-#	print("max_hp_label:", max_hp_label)
-#	print("cost_label:", cost_label)
-#	print("image_rect:", image_rect)
 	
 	if name_label:
 		name_label.text = card_name
