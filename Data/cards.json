@@ -1,0 +1,23 @@
+{
+	"cards": [
+		{
+			"card_name": "VampireSwordmaster",
+			"image_name": "art/VampireSwordmaster.webp",
+			"strength": 3,
+			"max_hp": 4,
+			"cost": 5,
+			"tags": ["Undead"],
+			"etfEffectName": "null"
+		},
+
+		{
+			"card_name": "Troll",
+			"image_name": "art/Troll.webp",
+			"strength": 2,
+			"max_hp": 5,
+			"cost": 5,
+			"tags": [],
+			"etfEffectName": "null"
+		}
+	]	
+}

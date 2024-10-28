@@ -1,7 +1,7 @@
 extends Node2D
 class_name CardLoader
 
-const CardScene = preload("res://Card.tscn")
+const CardScene = preload("res://card.tscn")
 
 # Setup variables needed to read and parse the card data JSON file
 const CARDS_JSON_FILEPATH = "res://Data/cards.json"
@@ -19,8 +19,8 @@ func instantiate_cards_from_json() -> Array:
 	for card_data in card_data_dict:
 		var card_instance = CardScene.instantiate()  # Load the entire scene
 		print("Type of card_instance = ", card_instance)
-		card_instance.initialize(card_data)
 		print_tree()
+		card_instance.initialize(card_data)
 		add_child(card_instance)
 		card_instance.print_info()
 		card_instances.append(card_instance)
