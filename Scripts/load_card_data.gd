@@ -58,7 +58,7 @@ func load_cards_from_json(file_path: String) -> Dictionary:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("In Scripts/LoadCardData.gd --> _ready")
-	var cards = instantiate_cards_from_json()
+	#var cards = instantiate_cards_from_json()
 	#print("Instaniated cards =\n", cards)
 	#print("Instaniated cards[0].card_name = ", cards[0].card_name)
 

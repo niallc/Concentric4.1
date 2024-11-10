@@ -18,6 +18,46 @@
 			"cost": 5,
 			"tags": [],
 			"etfEffectName": "null"
+		},
+
+		{
+			"card_name": "VengefulWarlord",
+			"image_name": "art/VengefulWarlord.webp",
+			"strength": 3,
+			"max_hp": 4,
+			"cost": 5,
+			"tags": [],
+			"etfEffectName": "BoostPTIfBehind"
+		},
+
+		{
+			"card_name": "AmnesiaMage",
+			"image_name": "art/AmnesiaMage.webp",
+			"strength": 2,
+			"max_hp": 1,
+			"cost": 4,
+			"tags": [],
+			"etfEffectName": "null"
+		},
+
+		{
+			"card_name": "RiverEfreet",
+			"image_name": "art/riverEfreet.webp",
+			"strength": 5,
+			"max_hp": 5,
+			"cost": 5,
+			"tags": [],
+			"etfEffectName": "null"
+		},
+
+		{
+			"card_name": "tauntingElf",
+			"image_name": "art/tauntingElf.webp",
+			"strength": 2,
+			"max_hp": 1,
+			"cost": 3,
+			"tags": [],
+			"etfEffectName": "null"
 		}
 	]	
 }

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/battlefield.gd" id="1_mq1p0"]
 
-[node name="PlayAreaScene" type="Node2D"]
+[node name="PlayAreaNode" type="Node2D"]
 position = Vector2(0.991913, 3.13177)
 script = ExtResource("1_mq1p0")
 
