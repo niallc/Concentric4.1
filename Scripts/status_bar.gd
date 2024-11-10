@@ -11,9 +11,9 @@ const CORNER_RADIUS = 5
 var empty_color: Color
 var full_color: Color
 var gradient: Gradient
-var bar_type: StatusBarZone.BarType
+var bar_type: BarZone.BarType
 
-func setup(type: StatusBarZone.BarType) -> void:
+func setup(type: BarZone.BarType) -> void:
 	bar_type = type
 	setup_colors()
 	create_segments()
@@ -21,7 +21,7 @@ func setup(type: StatusBarZone.BarType) -> void:
 
 func setup_colors() -> void:
 	gradient = Gradient.new()
-	if bar_type == StatusBarZone.BarType.LIFE:
+	if bar_type == BarZone.BarType.LIFE:
 		empty_color = Color(0.2, 0.0, 0.0, 1.0)  # Dark red
 		full_color = Color(1.0, 0.0, 0.0, 1.0)   # Bright red
 	else:
@@ -39,10 +39,10 @@ func create_segments() -> void:
 		
 		# Add shader for rounded corners and gradient
 		var shader = load("res://shaders/segment_shader.gdshader")
-		var material = ShaderMaterial.new()
-		material.shader = shader
-		material.set_shader_parameter("corner_radius", CORNER_RADIUS)
-		segment.material = material
+		var shader_material = ShaderMaterial.new()
+		shader_material.shader = shader
+		shader_material.set_shader_parameter("corner_radius", CORNER_RADIUS)
+		segment.material = shader_material
 		
 		segments.append(segment)
 		add_child(segment)

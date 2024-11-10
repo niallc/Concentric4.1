@@ -6,6 +6,9 @@ var CardLoaderBf = load("res://Scripts/load_card_data.gd").new()
 var MyGameLogic = load("res://Scripts/battle_logic.gd").new()
 @onready var card_zones_inst = ZonesClass.new()
 
+var status_bars: Dictionary = {}
+
+
 func _ready():
 	print("In Battlefield _ready")
 	
@@ -18,7 +21,6 @@ func _ready():
 	card_zones_inst.initialize_zones()  # Ensure zones are initialized
 
 	# Set textures and render zones
-	print()
 	update_zone_constant(card_zones_inst.get_card_zone(ZonesClass.CardZoneId.P1L1), 
 						 load(p1_cards[0].image_name))
 	update_zone_constant(card_zones_inst.get_card_zone(ZonesClass.CardZoneId.P1L2), 
@@ -46,34 +48,20 @@ func render_zones():
 		visual_node.texture = card_zones_inst.get_card_zone(i).card_texture
 		add_child(visual_node)
 	
+	# Render bar zones
 	for i in ZonesClass.BarZoneId.values():
-		print("OMG, how do I render a bar zone?")
+		var zone = card_zones_inst.get_bar_zone(i)
+		var status_bar = StatusBar.new()
+		status_bar.position = zone.zonePos
+		status_bar.setup(zone.bar_type)  # This configures colors and creates segments
+		status_bar.update_value(zone.current_value)
+		add_child(status_bar)
+		status_bars[i] = status_bar  # Store reference
+
 
 
 func update_zone_constant(zone: CardZone, texture: Texture2D) -> void:
 	zone.set_card_texture(texture)
-
-## Example usage in battlefield.gd
-#func create_status_bars():
-## Currently the ZONES are created in battlefield_zones.gd, so there's no 
-## need to create zones here.
-	#var life_zone = StatusBarZone.new(StatusBarZone.BarType.LIFE)
-	##life_zone.zonePos = Vector2(P1_LIFE_WIDTH, P1_LIFE_HEIGHT)
-	##
-	#var mana_zone = StatusBarZone.new(StatusBarZone.BarType.MANA)
-	##mana_zone.zonePos = Vector2(P1_MANA_WIDTH, P1_MANA_HEIGHT)
-	#
-	#var life_bar = StatusBar.new()
-	#life_bar.position = life_zone.zonePos
-	#add_child(life_bar)
-	#
-	#var mana_bar = StatusBar.new()
-	#mana_bar.position = mana_zone.zonePos
-	#add_child(mana_bar)
-	#
-	## Example updates
-	#life_bar.update_value(15) # Set life to 15/20
-	#mana_bar.update_value(10) # Set mana to 10/20
 
 func setup_status_bars():
 	var p1_life_zone = card_zones_inst.get_bar_zone(CardZones.BarZoneId.P1LIFE)
@@ -86,3 +74,10 @@ func setup_status_bars():
 	p1_mana_zone.bar_type = BarZone.BarType.MANA
 	p2_life_zone.bar_type = BarZone.BarType.LIFE
 	p2_mana_zone.bar_type = BarZone.BarType.MANA
+
+#func update_bar(zone_id: ZonesClass.BarZoneId, new_value: int):
+func update_bar(zone_id, new_value: int):
+	var zone = card_zones_inst.get_bar_zone(zone_id)
+	zone.update_value(new_value)
+	if zone_id in status_bars:
+		status_bars[zone_id].update_value(zone.current_value)

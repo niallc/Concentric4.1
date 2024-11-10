@@ -10,6 +10,9 @@ var current_value: int = 20
 var max_value: int = 20
 var bar_type: BarType
 
+var width: float = 200  # Default width
+var height: float = 40  # Default height
+
 func _init(type: BarType = BarType.LIFE):
 	bar_type = type
 
