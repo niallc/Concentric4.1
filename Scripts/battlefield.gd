@@ -7,11 +7,15 @@ var MyGameLogic = load("res://Scripts/battle_logic.gd").new()
 @onready var card_zones_inst = ZonesClass.new()
 
 var status_bars: Dictionary = {}
+var background: Node2D
 
 
 func _ready():
 	print("In Battlefield _ready")
-	
+	background = preload("res://Scripts/battlefield_background.gd").new()
+	add_child(background)
+	background.z_index = -1  # Ensure it stays behind cards
+		
 	var all_cards = CardLoaderBf.instantiate_cards_from_json()
 	var p1_cards = all_cards.slice(0,3)
 	var p2_cards = all_cards.slice(3,6)
@@ -46,6 +50,15 @@ func render_zones():
 		var this_scale = card_zones_inst.get_card_zone(i).zoneScale
 		visual_node.scale = Vector2(this_scale[0], this_scale[1])
 		visual_node.texture = card_zones_inst.get_card_zone(i).card_texture
+		
+		# Add shader for rounded corners
+		var shader = load("res://shaders/card_shader.gdshader")
+		var shader_material = ShaderMaterial.new()
+		shader_material.shader = shader
+		shader_material.set_shader_parameter("corner_radius", 120.0)  # Adjust as needed
+		shader_material.set_shader_parameter("edge_softness", 2.0)   # Adjust for sharper/softer edges
+		visual_node.material = shader_material
+		
 		add_child(visual_node)
 	
 	# Render bar zones

@@ -3,9 +3,9 @@ extends Node2D
 class_name StatusBar
 
 @onready var segments: Array[ColorRect] = []
-const SEGMENT_WIDTH = 20
-const SEGMENT_HEIGHT = 40
-const SEGMENT_SPACING = 2
+const SEGMENT_WIDTH = 40
+const SEGMENT_HEIGHT = 20
+const SEGMENT_SPACING = 6
 const CORNER_RADIUS = 5
 
 var empty_color: Color
@@ -47,10 +47,13 @@ func create_segments() -> void:
 		segments.append(segment)
 		add_child(segment)
 
-func update_value(current: int, maximum: int = 20) -> void:
+func update_value(current: int, _maximum: int = 20) -> void:
 	for i in range(segments.size()):
 		var segment = segments[i]
 		if i < current:
-			segment.color = gradient.sample(float(i) / maximum)
+			pass
+			#segment.color = current > i ? full_color : empty_color
+			#segment.color = gradient.sample(float(i) / maximum)
+			segment.color = full_color
 		else:
 			segment.color = empty_color

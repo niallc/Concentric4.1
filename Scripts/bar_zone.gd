@@ -6,7 +6,7 @@ enum BarType { LIFE, MANA }
 
 var zonePos: Vector2
 var zoneScale: Vector2
-var current_value: int = 20
+var current_value: int = 10
 var max_value: int = 20
 var bar_type: BarType
 
