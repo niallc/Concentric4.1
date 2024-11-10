@@ -49,7 +49,7 @@ const BAR_ZONE_LOCATIONS = {
 	BarZoneId.P2MANA: Vector2(P2_MANA_WIDTH, P2_MANA_HEIGHT),
 }
 
-var bar_zones: Array[StatusBarZone] = []
+var bar_zones: Array[BarZone] = []
 var card_zones: Array[CardZone] = []
 
 var zones: Dictionary = {"card_zones": card_zones,
@@ -61,10 +61,10 @@ func _init():
 
 # Function to initialize zones
 func initialize_zones():
-	bar_zones = [StatusBarZone.new(), #P1 Life
-				 StatusBarZone.new(), #P1 Mana
-				 StatusBarZone.new(), #P2 Life
-				 StatusBarZone.new()] #P2 Mana
+	bar_zones = [BarZone.new(), #P1 Life
+				 BarZone.new(), #P1 Mana
+				 BarZone.new(), #P2 Life
+				 BarZone.new()] #P2 Mana
 	card_zones = [CardZone.new(), CardZone.new(), CardZone.new(),
 				  CardZone.new(), CardZone.new(), CardZone.new()]
 	zones.card_zones = card_zones
@@ -79,11 +79,8 @@ func initialize_zones():
 		zones.bar_zones[i].zonePos = BAR_ZONE_LOCATIONS[i]
 
 # Getter for zones
-func get_zone(zone_type: String, zone_id: int) -> CardZone:
-	if zone_type == "Card":
-		return zones.card_zones[zone_id]
-	elif zone_type == "bar":
-		return zones.bar_zones[zone_id]
-	else:
-		print("ERROR: Don't know what type of zone you want.")
-		return CardZone.new()
+func get_card_zone(zone_id: int) -> CardZone:
+	return zones.card_zones[zone_id]
+
+func get_bar_zone(zone_id: int) -> BarZone:
+	return zones.bar_zones[zone_id]

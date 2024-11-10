@@ -11,14 +11,17 @@ const CORNER_RADIUS = 5
 var empty_color: Color
 var full_color: Color
 var gradient: Gradient
+var bar_type: StatusBarZone.BarType
 
-func _ready() -> void:
+func setup(type: StatusBarZone.BarType) -> void:
+	bar_type = type
 	setup_colors()
 	create_segments()
 
+
 func setup_colors() -> void:
 	gradient = Gradient.new()
-	if get_parent() is StatusBarZone and get_parent().bar_type == StatusBarZone.BarType.LIFE:
+	if bar_type == StatusBarZone.BarType.LIFE:
 		empty_color = Color(0.2, 0.0, 0.0, 1.0)  # Dark red
 		full_color = Color(1.0, 0.0, 0.0, 1.0)   # Bright red
 	else:
