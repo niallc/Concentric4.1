@@ -16,13 +16,13 @@ func _ready():
 	add_child(background)
 	background.z_index = 1  # Higher numbers make the card_slot appearon top of the cards
 	
-	# Add a debug visual to verify the background node is present
-	var debug_rect = ColorRect.new()
-	debug_rect.size = Vector2(100, 100)
-	debug_rect.position = Vector2(200, 200)
-	debug_rect.color = Color(1, 0.5, 0, 0.3)  # Semi-transparent yellow
-	background.add_child(debug_rect)
-	print("Added debug rectangle to background")
+	## Add a debug visual to verify the background node is present
+	#var debug_rect = ColorRect.new()
+	#debug_rect.size = Vector2(100, 100)
+	#debug_rect.position = Vector2(200, 200)
+	#debug_rect.color = Color(1, 0.5, 0, 0.3)  # Semi-transparent yellow
+	#background.add_child(debug_rect)
+	#print("Added debug rectangle to background")
 
 	var all_cards = CardLoaderBf.instantiate_cards_from_json()
 	var p1_cards = all_cards.slice(0,3)

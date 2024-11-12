@@ -5,7 +5,11 @@ var ZonesClass = preload("res://Scripts/battlefield_zones.gd")
 var card_slot_shader: Shader
 var card_slot_material: ShaderMaterial
 
-const SLOT_SCALE = 1
+# I want to place a border for each zone that indicates where cards will appear
+# and acts as a frame for the cards when they do appear. to get the sizing right
+# it refers to the sizes of the cards, but then we make it a little bigger so that
+# The shape we draw ends up outside the cards.
+const SLOT_SCALE = 1.10
 
 func _ready():
 	#print("** In battlefield_background _ready...")
@@ -31,8 +35,8 @@ func setup_card_slots():
 		
 		# Apply shader material
 		var bkg_material = card_slot_material.duplicate()
-		bkg_material.set_shader_parameter("border_width", 400.0)
-		bkg_material.set_shader_parameter("corner_radius", 800.0)
+		bkg_material.set_shader_parameter("border_width", SLOT_SCALE - 1)
+		bkg_material.set_shader_parameter("corner_radius", 0.1)
 		#bkg_material.set_shader_parameter("border_color", Color(0.8, 0.2, 0.2, 0.3))
 		slot_sprite.material = bkg_material
 		
