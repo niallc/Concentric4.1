@@ -5,7 +5,10 @@ var ZonesClass = preload("res://Scripts/battlefield_zones.gd")
 var card_slot_shader: Shader
 var card_slot_material: ShaderMaterial
 
+const SLOT_SCALE = 1
+
 func _ready():
+	#print("** In battlefield_background _ready...")
 	# Load and setup shader
 	card_slot_shader = load("res://shaders/card_slot_shader.gdshader")
 	card_slot_material = ShaderMaterial.new()
@@ -23,19 +26,25 @@ func setup_card_slots():
 		
 		# Position and scale
 		slot_sprite.position = ZonesClass.CARD_ZONE_LOCATIONS[zone_id]
-		slot_sprite.scale = Vector2(ZonesClass.LANE_SCALE_X, ZonesClass.LANE_SCALE_Y)
+		slot_sprite.scale = Vector2(ZonesClass.LANE_SCALE_X * SLOT_SCALE,
+									ZonesClass.LANE_SCALE_Y * SLOT_SCALE)
 		
 		# Apply shader material
 		var bkg_material = card_slot_material.duplicate()
-		bkg_material.set_shader_parameter("border_width", 4.0)
-		bkg_material.set_shader_parameter("corner_radius", 120.0)
-		bkg_material.set_shader_parameter("border_color", Color(0.8, 0.8, 0.8, 0.3))
+		bkg_material.set_shader_parameter("border_width", 400.0)
+		bkg_material.set_shader_parameter("corner_radius", 800.0)
+		#bkg_material.set_shader_parameter("border_color", Color(0.8, 0.2, 0.2, 0.3))
 		slot_sprite.material = bkg_material
 		
 		add_child(slot_sprite)
 
 func create_slot_texture() -> ImageTexture:
 	# Create a blank white texture for the shader to work with
-	var image = Image.create(350, 500, false, Image.FORMAT_RGBA8)
-	image.fill(Color(1, 1, 1, 1))
+	var image = Image.create(1100, 1100, false, Image.FORMAT_RGBA8)
+	image.fill(Color(0.8, 0.7, 1, 0.9))
 	return ImageTexture.create_from_image(image)
+	#var image = Image.create(700, 1000, false, Image.FORMAT_RGBA8)
+	#image.fill(Color(0.0, 1.0, 0.0, 0.7))  # Semi-transparent green for debugging
+	#var texture = ImageTexture.create_from_image(image)
+	#print("Created texture of size: ", image.get_size())
+	#return texture

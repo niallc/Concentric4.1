@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform float corner_radius : hint_range(0, 50) = 20.0;
+uniform float corner_radius : hint_range(0, 50) = 2.0;
 uniform float edge_softness : hint_range(0, 10) = 2.0;
 
 void fragment() {
