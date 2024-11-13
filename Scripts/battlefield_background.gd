@@ -45,7 +45,7 @@ func setup_card_slots():
 func create_slot_texture() -> ImageTexture:
 	# Create a blank white texture for the shader to work with
 	var image = Image.create(1100, 1100, false, Image.FORMAT_RGBA8)
-	image.fill(Color(0.8, 0.7, 1, 0.9))
+	image.fill(Color(0.8, 0.8, 0.8, 0.7))
 	return ImageTexture.create_from_image(image)
 	#var image = Image.create(700, 1000, false, Image.FORMAT_RGBA8)
 	#image.fill(Color(0.0, 1.0, 0.0, 0.7))  # Semi-transparent green for debugging
