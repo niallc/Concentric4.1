@@ -19,14 +19,17 @@ func instantiate_cards_from_json() -> Array:
 	
 	for card_data in all_cards:
 		var card_instance = CardScene.instantiate()  # Load the entire scene
-		card_instance.initialize(card_data)
 		add_child(card_instance)
+
+		# Defer initialization until after `_ready` has been called
+		#card_instance.call_deferred("initialize", card_data)
+		card_instance.initialize(card_data)
 		card_instances.append(card_instance)
 	
 	return card_instances
 
 # Load and parse JSON data
-func load_cards_from_json(file_path: String) -> Dictionary:
+func load_cards_from_json(file_path: String, verbose: int = 0) -> Dictionary:
 	if FileAccess.file_exists(file_path):
 		var cardsJsonFile = FileAccess.open(file_path, FileAccess.READ)
 
@@ -37,10 +40,12 @@ func load_cards_from_json(file_path: String) -> Dictionary:
 			var parsedData = cardsJson.get_data()
 
 			if(parsedData is Dictionary and parsedData.has("cards")):
-				print("Seem to have loaded and parsed card-data!")
+				if (verbose > 0):
+					print("Seem to have loaded and parsed card-data!")
 				return parsedData
 			else:
-				print("No parsable data found in:\n  ", file_path)
+				if (verbose > 0):
+					print("No parsable data found in:\n  ", file_path)
 				return {}
 		else:
 			if error == 43:
@@ -57,7 +62,8 @@ func load_cards_from_json(file_path: String) -> Dictionary:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("In Scripts/LoadCardData.gd --> _ready")
+	pass;
+	#print("In Scripts/LoadCardData.gd --> _ready")
 	#var cards = instantiate_cards_from_json()
 	#print("Instaniated cards =\n", cards)
 	#print("Instaniated cards[0].card_name = ", cards[0].card_name)

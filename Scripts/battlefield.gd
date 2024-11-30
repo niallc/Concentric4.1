@@ -4,6 +4,8 @@ extends Node2D
 var ZonesClass = load("res://Scripts/battlefield_zones.gd")
 var CardLoaderBf = load("res://Scripts/load_card_data.gd").new()
 var MyGameLogic = load("res://Scripts/battle_logic.gd").new()
+# var MyTranscript = load("res://Scripts/transcript.gd").new()
+var TestGameLogic = load("res://Scripts/battle_logic.gd").new()
 @onready var card_zones_inst = ZonesClass.new()
 
 var status_bars: Dictionary = {}
@@ -12,6 +14,10 @@ var background: Node2D
 
 func _ready():
 	print("In Battlefield _ready")
+	add_child(CardLoaderBf)
+
+	#print("MyTranscript.transcript = ", MyTranscript.transcript)
+	#print("MyTranscript.TGameState = ", MyTranscript.TGameState)
 	background = preload("res://Scripts/battlefield_background.gd").new()
 	add_child(background)
 	background.z_index = 1  # Higher numbers make the card_slot appearon top of the cards
@@ -27,9 +33,10 @@ func _ready():
 	var all_cards = CardLoaderBf.instantiate_cards_from_json()
 	var p1_cards = all_cards.slice(0,3)
 	var p2_cards = all_cards.slice(3,6)
-	var _test_transcript = MyGameLogic._ready()
-	print("length(p1_cards) = ", len(p1_cards))
-	print("length(p2_cards) = ", len(p2_cards))
+	#var _test_logic_container = MyGameLogic._ready()
+	var test_transcript = TestGameLogic.transcript
+	#print("length(p1_cards) = ", len(p1_cards))
+	#print("length(p2_cards) = ", len(p2_cards))
 	card_zones_inst.initialize_zones()  # Ensure zones are initialized
 
 	# Set textures and render zones

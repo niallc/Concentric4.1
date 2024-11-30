@@ -24,6 +24,7 @@ func _process(_delta: float) -> void:
 
 
 # Function to update card texture
-func set_card_texture(inputTexture: Texture2D) -> void:
+func set_card_texture(inputTexture: Texture2D, verbose: int = 0) -> void:
 	card_texture = inputTexture
-	print("Texture updated for zone at zonePos ", zonePos)
+	if (verbose > 0):
+		print("Texture updated for zone at zonePos ", zonePos)
