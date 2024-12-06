@@ -18,8 +18,9 @@ var etfEffectName: String = ""
 @onready var max_hp_label: Label = $Control/MaxHPLabel
 @onready var cost_label: Label = $Control/CostLabel
 
-func _ready():
-	print("In Scripts/Card.gd --> _ready")
+func _ready(verbose: int = 0):
+	if verbose > 0:
+		print("In Scripts/Card.gd --> _ready")
 	pass
 	
 func initialize(data: Dictionary, verbose: int = 0) -> void:
